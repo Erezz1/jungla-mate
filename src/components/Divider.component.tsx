@@ -7,7 +7,7 @@ const DividerComponent: FC<BoxProps> = ({ ...props }) => {
       as="span"
       width="2rem"
       height="3px"
-      backgroundColor="orange.400"
+      backgroundColor="#3e6913"
       rounded="full"
       margin="0 auto"
       {...props}

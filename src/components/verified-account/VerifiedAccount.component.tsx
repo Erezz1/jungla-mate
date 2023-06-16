@@ -9,7 +9,8 @@ import {
   WrapperComponent,
   InputComponent,
   ButtonComponent,
-  DividerComponent
+  DividerComponent,
+  AddSpaceComponent
 } from '@/components';
 import { useVerifyUser } from '@/features/auth';
 
@@ -79,6 +80,9 @@ const VerifiedAccountComponent = () => {
           Cambiar password
         </ButtonComponent>
       </Form>
+      <AddSpaceComponent>
+        Espacio publicitario
+      </AddSpaceComponent>
     </WrapperComponent>
   )
 }

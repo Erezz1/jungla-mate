@@ -1,14 +1,17 @@
-import { FC, useState } from 'react';
+import { FC, ReactElement, useState } from 'react';
 import {
   Button,
+  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Input,
   InputProps,
+  Text,
 } from '@chakra-ui/react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { UseFormRegister } from 'react-hook-form';
+import { IconType } from 'react-icons';
 
 interface Props extends InputProps {
   /**
@@ -30,6 +33,11 @@ interface Props extends InputProps {
    * Texto de marcador de posición para el campo.
    */
   placeholder?: string;
+
+  /**
+   * Icono que se mostrara a un lado del input
+   */
+  icon?: ReactElement | null;
 }
 
 /**
@@ -42,6 +50,7 @@ const InputComponent: FC<Props> = ({
   isRequired,
   placeholder = '',
   type = 'text',
+  icon,
   ...props
 }) => {
   /**
@@ -60,24 +69,63 @@ const InputComponent: FC<Props> = ({
       isRequired={isRequired}
       isInvalid={!!error}
     >
-      {type !== 'password' ? (
-        <Input
-          type={type}
-          placeholder=" "
-          focusBorderColor={error ? 'red.500' : 'purple.500'}
-          {...register(name)}
-          {...props}
-        />
-      ) : (
-        <Input
-          type={show ? 'text' : 'password'}
-          placeholder=" "
-          focusBorderColor={error ? 'red.500' : 'purple.500'}
-          {...register(name)}
-          {...props}
-        />
+      {type !== 'password' ? (<>
+        <Flex
+          gap="5px"
+          alignItems="center"
+        >
+          {icon && <Text
+            fontSize="2.5rem"
+            color="#3e6913"
+          >
+            {icon}
+          </Text>}
+          <Input
+            type={type}
+            placeholder=" "
+            focusBorderColor={error ? 'red.500' : '#3e6913'}
+            border="1px solid #3e6913"
+            rounded="full"
+            backgroundColor="#3e691350"
+            placeholder={placeholder}
+            _placeholder={{
+              color: '#3e6913',
+              fontWeight: 'bold',
+              textTransform: 'uppercase'
+            }}
+            {...register(name)}
+            {...props}
+          />
+        </Flex>
+      </>) : (
+        <Flex
+          gap="5px"
+          alignItems="center"
+        >
+          {icon && <Text
+            fontSize="2.5rem"
+            color="#3e6913"
+          >
+            {icon}
+          </Text>}
+          <Input
+            type={show ? 'text' : 'password'}
+            placeholder=" "
+            focusBorderColor={error ? 'red.500' : '#3e6913'}
+            border="1px solid #3e6913"
+            rounded="full"
+            backgroundColor="#3e691350"
+            placeholder={placeholder}
+            _placeholder={{
+              color: '#3e6913',
+              fontWeight: 'bold',
+              textTransform: 'uppercase'
+            }}
+            {...register(name)}
+            {...props}
+          />
+        </Flex>
       )}
-      <FormLabel fontWeight="normal" cursor="text">{placeholder}</FormLabel>
       <FormErrorMessage>{error}</FormErrorMessage>
 
       {type === 'password' && (
@@ -89,6 +137,11 @@ const InputComponent: FC<Props> = ({
           right="6px"
           top="6px"
           zIndex="2"
+          rounded="full"
+          backgroundColor="#3e6913"
+          color="gray.200"
+          _hover={{ opacity: 0.8 }}
+          _active={{ opacity: 1 }}
           onClick={handleClick}
         >
           {show ? <AiFillEyeInvisible /> : <AiFillEye />}

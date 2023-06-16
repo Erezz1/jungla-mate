@@ -15,10 +15,7 @@ export const Form: FC<FormProps> = ({ children, onSubmit }) => (
     width="90%"
     maxWidth="700px"
     margin="0 auto"
-    rounded="md"
-    shadow="md"
     padding="1rem"
-    backgroundColor="white"
     gap="1rem"
     onSubmit={onSubmit}
   >

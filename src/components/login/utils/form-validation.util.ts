@@ -4,7 +4,7 @@ export const formValidation = yup.object({
   userName: yup
     .string()
     .required('El username es obligatorio')
-    .min(4, 'El nombre debe tener al menos cuatro caracteres'),
+    .min(4, 'El username debe tener al menos cuatro caracteres'),
   password: yup
     .string()
     .required('La contraseña es obligatoria')
