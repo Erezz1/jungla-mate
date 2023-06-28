@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Flex, FlexProps, Image, Text, TextProps } from '@chakra-ui/react';
+import { Box, Flex, FlexProps, Image, Text, TextProps } from '@chakra-ui/react';
 
 import hoja2 from '@/resources/hojas2.png';
 
@@ -28,19 +28,22 @@ export const Container: FC<FlexProps> = ({ children }) => (
 )
 
 export const Title: FC<TextProps> = ({ children }) => (
-  <Text
-    as="h2"
-    fontSize={["2xl", "3xl", "5xl"]}
-    fontWeight="hairline"
-    marginBottom="3rem"
-    textTransform="uppercase"
-    color="gray.800"
-    textShadow={`
-      2px 0 #3e691370, -2px 0 #3e691370, 0 2px #3e691370, 0 -2px #3e691370,
-      2px 2px #3e691370, -2px -2px #3e691370, 2px -2px #3e691370, -2px 2px #3e691370;
-    `}
-    letterSpacing="3px"
+  <Box
+    backgroundColor="#3e6913"
+    width="100%"
+    position="absolute"
+    top="0"
   >
-    {children}
-  </Text>
+    <Text
+      as="h2"
+      fontSize={["2xl", "3xl", "3xl", "4xl"]}
+      textTransform="uppercase"
+      color="white"
+      padding="5px"
+      textAlign={["center", "center", "center", "center", "left"]}
+      margin={["0", "0", "0 15rem"]}
+    >
+      {children}
+    </Text>
+  </Box>
 )

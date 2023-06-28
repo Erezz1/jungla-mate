@@ -20,7 +20,7 @@ const WrapperComponent: FC<Props> = ({ children }) => (
       position="fixed"
       top="0"
       right="0"
-      width={["150px", "200px", "350px"]}
+      width={["150px", "200px", "250px"]}
       transform="scaleX(-1)"
       zIndex="1"
     />
@@ -29,7 +29,7 @@ const WrapperComponent: FC<Props> = ({ children }) => (
       position="fixed"
       top="0"
       left="0"
-      width={["150px", "200px", "350px"]}
+      width={["150px", "200px", "250px"]}
       zIndex="1"
     />
     {children}
