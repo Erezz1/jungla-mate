@@ -9,7 +9,6 @@ export const authInterceptor = (value: any): Auth => {
       isVerified: value.isVerify,
       lastName: value.lastName,
       location: value.nameLocation,
-      role: value.nameRole,
       userName: value.userName,
     }
   }

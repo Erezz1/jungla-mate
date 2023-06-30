@@ -6,8 +6,5 @@ interface User {
   idLocation: number;
   location: string;
   idRole: number;
-  role: Roles;
   isVerified: boolean;
 }
-
-type Roles = 'ADMIN' | 'WAREHOUSE' | 'SALESMAN' | 'WHOLESALER';

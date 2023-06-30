@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { Img, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import { Box, Img, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react';
 
 import { WrapperComponent } from '@/components';
 import { Title } from './Inicio.styled.page';
@@ -7,6 +8,7 @@ import { Title } from './Inicio.styled.page';
 import logo from '@/resources/logo.png';
 
 const InicioPage: FC = () => {
+  const navigate = useNavigate();
 
   const courses = [
     {
@@ -78,20 +80,73 @@ const InicioPage: FC = () => {
   ]
 
   return (
-    <WrapperComponent>
+    <WrapperComponent flexDirection="column">
       <Title>INSTITUTO PAULO FREIRE</Title>
 
-      <Tabs variant="solid-rounded" colorScheme="green">
-        <TabList backgroundColor="gray.100">
+      <Text
+        fontSize="5xl"
+        textTransform="uppercase"
+        textAlign="center"
+        marginBottom="2rem"
+      >
+        Avances
+      </Text>
+
+      <Tabs
+        variant="solid-rounded"
+        colorScheme="green"
+        width="100%"
+        maxWidth="1000px"
+      >
+        <TabList
+          backgroundColor="green.200"
+          rounded="3xl"
+          width="100%"
+          margin="0 auto"
+          display="flex"
+          justifyContent="space-between"
+          gap="1rem"
+        >
           {courses.map(course => (
-            <Tab key={course.id}>{course.title}</Tab>
+            <Tab
+              key={course.id}
+              width="100%"
+              textTransform="uppercase"
+              fontWeight="light"
+              fontSize="2xl"
+              color="gray.100"
+            >
+              {course.title}
+            </Tab>
           ))}
         </TabList>
-        <TabPanels>
+
+        <TabPanels padding="5rem 0">
           {courses.map(course => (
-            <TabPanel key={course.id}>
+            <TabPanel
+              key={course.id}
+              display="grid"
+              gridTemplateColumns="repeat(3, 1fr)"
+              gap="2rem"
+              padding="0"
+            >
               {course.courses.map(course => (
-                <p key={course.id}>{course.name}</p>
+                <Box
+                  key={course.id}
+                  width="100%"
+                  textTransform="uppercase"
+                  fontWeight="light"
+                  fontSize="2xl"
+                  color="gray.100"
+                  backgroundColor="green.700"
+                  textAlign="center"
+                  rounded="3xl"
+                  padding="5px 0"
+                  cursor="pointer"
+                  onClick={() => navigate(`/${course.id}`)}
+                >
+                  {course.name}
+                </Box>
               ))}
             </TabPanel>
           ))}

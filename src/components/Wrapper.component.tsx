@@ -1,12 +1,12 @@
 import { FC, ReactNode, memo } from 'react';
-import { Box, Img } from '@chakra-ui/react';
+import { Box, BoxProps, Img } from '@chakra-ui/react';
 
 import jungla1 from '@/resources/s.webp';
 
-interface Props {
+interface Props extends BoxProps {
   children: ReactNode;
 }
-const WrapperComponent: FC<Props> = ({ children }) => (
+const WrapperComponent: FC<Props> = ({ children, ...props }) => (
   <Box
     width="100%"
     height="100vh"
@@ -14,6 +14,7 @@ const WrapperComponent: FC<Props> = ({ children }) => (
     justifyContent="center"
     alignItems="center"
     position="relative"
+    {...props}
   >
     <Img
       src={jungla1}

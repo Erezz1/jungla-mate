@@ -9,7 +9,7 @@ const Router: FC = () => {
 
   return (
     <Suspense fallback={null}>
-      <RouterProvider router={router[user.role]} />
+      <RouterProvider router={router} />
     </Suspense>
   )
 }
